@@ -10,6 +10,7 @@ services:
       - DATABASE_URL=${DB_URL}
       - DATABASE_USER=${DB_USER}
       - DATABASE_PASSWORD=${DB_PASSWORD}
+      - WATCHFILES_FORCE_POLLING=true
     depends_on:
       - db
   frontend:
@@ -21,7 +22,7 @@ services:
       - ./frontend:/app
       - /app/node_modules
   db:
-    image: postgres:18-alpine
+    image: postgres:16-alpine
     container_name: database
     ports:
       - "${DB_PORT}:5432"
